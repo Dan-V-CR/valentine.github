@@ -1,139 +1,47 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selección de comida</title>
-    <link rel="stylesheet" href="css/food.css" />
-  </head>
-  <body>
-    <div id="foodquestion">
-      <b>¿Qué te gustaría comer?</b>
-    </div>
+<div class="dessert-item">
+  <img src="food/tortachocolate.jpeg" alt="torta de chocolate" />
+  <label>
+    <input type="checkbox" name="postre" value="Torta de chocolate" />
+    torta de chocolate
+  </label>
+</div>
 
-    <div class="food-selection">
-      <div class="food-item">
-        <img src="food/burgers.jpeg" alt="Hamburguesa y pollo frito" />
-        <label>
-          <input
-            type="checkbox"
-            name="food"
-            value="Hamburguesas y pollo frito"
-          />
-          hamburguesas y pollo frito
-        </label>
-      </div>
+<div class="dessert-item">
+  <img src="food/tresleches.webp" alt="tres leches" />
+  <label>
+    <input type="checkbox" name="postre" value="Tres leches" />
+    tres leches
+  </label>
+</div>
 
-      <div class="food-item">
-        <img src="food/dog.jpeg" alt="hotdog" />
-        <label>
-          <input type="checkbox" name="food" value="Hotdog" />
-          hotdog
-        </label>
-      </div>
+<div class="dessert-item">
+  <img src="food/tortachilena.jpg" alt="torta chilena" />
+  <label>
+    <input type="checkbox" name="postre" value="Torta chilena" />
+    torta chilena
+  </label>
+</div>
 
-      <div class="food-item">
-        <img src="food/koreanfood.jpeg" alt="comida asiatica" />
-        <label>
-          <input type="checkbox" name="food" value="Comida asiatica" />
-          comida asiatica
-        </label>
-      </div>
+<div class="dessert-item">
+  <img src="food/arrozconleche.avif" alt="arroz con leche" />
+  <label>
+    <input type="checkbox" name="postre" value="Arroz con leche" />
+    arroz con leche
+  </label>
+</div>
 
-      <div class="food-item">
-        <img src="food/pasta.jpeg" alt="pasta" />
-        <label>
-          <input type="checkbox" name="food" value="Pasta" />
-          pasta
-        </label>
-      </div>
+<div class="dessert-item">
+  <img src="food/cheesecake.webp" alt="cheesecake" />
+  <label>
+    <input type="checkbox" name="postre" value="Cheesecake" />
+    cheesecake
+  </label>
+</div>
 
-      <div class="food-item">
-        <img src="food/pizza.jpeg" alt="pizza" />
-        <label>
-          <input type="checkbox" name="food" value="Pizza" />
-          pizza
-        </label>
-      </div>
-
-      <div class="food-item">
-        <img src="food/salad.jpeg" alt="ensalada" />
-        <label>
-          <input type="checkbox" name="food" value="Ensalada" />
-          ensalada
-        </label>
-      </div>
-
-      <div class="food-item">
-        <img src="food/steak.jpeg" alt="steak" />
-        <label>
-          <input type="checkbox" name="food" value="Steak" />
-          steak
-        </label>
-      </div>
-
-      <div class="food-item">
-        <img src="food/sushi.jpeg" alt="sushi" />
-        <label>
-          <input type="checkbox" name="food" value="Sushi" />
-          sushi
-        </label>
-      </div>
-    </div>
-
-    <!-- Preview opcional -->
-    <p id="previewComida" style="margin-top: 16px;"></p>
-
-    <button class="button" id="btnContinuar">
-      Continue UWU
-    </button>
-
-    <script>
-      const checkboxes = document.querySelectorAll("input[name='food']");
-      const preview = document.getElementById("previewComida");
-      const btnContinuar = document.getElementById("btnContinuar");
-
-      // Cargar selección previa (si existe)
-      const comidaGuardada = JSON.parse(
-        localStorage.getItem("comidaValentine") || "[]"
-      );
-
-      checkboxes.forEach((cb) => {
-        if (comidaGuardada.includes(cb.value)) {
-          cb.checked = true;
-        }
-      });
-
-      function actualizarPreview() {
-        const seleccionadas = Array.from(checkboxes)
-          .filter((cb) => cb.checked)
-          .map((cb) => cb.value);
-
-        preview.innerText =
-          seleccionadas.length > 0
-            ? "Comida elegida: " + seleccionadas.join(", ")
-            : "";
-      }
-
-      actualizarPreview();
-
-      checkboxes.forEach((cb) => {
-        cb.addEventListener("change", actualizarPreview);
-      });
-
-      btnContinuar.addEventListener("click", () => {
-        const seleccionadas = Array.from(checkboxes)
-          .filter((cb) => cb.checked)
-          .map((cb) => cb.value);
-
-        localStorage.setItem(
-          "comidaValentine",
-          JSON.stringify(seleccionadas)
-        );
-
-        // Continuar a la siguiente página
-        window.location.href = "dessert.html";
-      });
-    </script>
-  </body>
-</html>
+<div class="dessert-item">
+  <img src="food/quequezana.jpeg" alt="queque de zanahoria" />
+  <label>
+    <input type="checkbox" name="postre" value="Queque de zanahoria" />
+    queque de zanahoria
+  </label>
+</div>
