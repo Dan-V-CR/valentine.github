@@ -10,3 +10,9 @@
   object-fit: cover;
   border-radius: 12px;
 }
+img {
+  width: 160px !important;
+  height: 160px !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+}
