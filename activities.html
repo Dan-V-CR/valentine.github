@@ -16,7 +16,7 @@
       <div class="activity-item">
         <img src="activities/arcade.jpeg" alt="arcade" />
         <label>
-          <input type="checkbox" name="activities" value="Arcade" />
+          <input type="checkbox" name="actividad" value="Arcade" />
           arcade
         </label>
       </div>
@@ -24,7 +24,7 @@
       <div class="activity-item">
         <img src="activities/cinema.jpeg" alt="cine" />
         <label>
-          <input type="checkbox" name="activities" value="Cine" />
+          <input type="checkbox" name="actividad" value="Cine" />
           cine
         </label>
       </div>
@@ -32,7 +32,7 @@
       <div class="activity-item">
         <img src="activities/keramika.jpeg" alt="cerámica" />
         <label>
-          <input type="checkbox" name="activities" value="Cerámica" />
+          <input type="checkbox" name="actividad" value="Cerámica" />
           cerámica
         </label>
       </div>
@@ -40,7 +40,7 @@
       <div class="activity-item">
         <img src="activities/kunsthalle.jpeg" alt="exposición" />
         <label>
-          <input type="checkbox" name="activities" value="Exposición" />
+          <input type="checkbox" name="actividad" value="Exposición" />
           exposición
         </label>
       </div>
@@ -48,15 +48,43 @@
       <div class="activity-item">
         <img src="activities/park.jpeg" alt="parque" />
         <label>
-          <input type="checkbox" name="activities" value="Parque" />
+          <input type="checkbox" name="actividad" value="Parque" />
           parque
         </label>
       </div>
 
     </div>
 
-    <button class="button" onclick="location.href='thankyou.html'">
+    <button class="button" id="btnContinuar">
       Continuar UWU
     </button>
+
+    <script>
+      const checkboxes = document.querySelectorAll("input[name='actividad']");
+      const btnContinuar = document.getElementById("btnContinuar");
+
+      const guardadas = JSON.parse(
+        localStorage.getItem("actividadValentine") || "[]"
+      );
+
+      checkboxes.forEach((cb) => {
+        if (guardadas.includes(cb.value)) {
+          cb.checked = true;
+        }
+      });
+
+      btnContinuar.addEventListener("click", () => {
+        const seleccionadas = Array.from(checkboxes)
+          .filter((cb) => cb.checked)
+          .map((cb) => cb.value);
+
+        localStorage.setItem(
+          "actividadValentine",
+          JSON.stringify(seleccionadas)
+        );
+
+        window.location.href = "thankyou.html";
+      });
+    </script>
   </body>
 </html>
