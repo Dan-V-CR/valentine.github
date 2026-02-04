@@ -38,3 +38,9 @@ body {
   border-radius: 12px;
   border: 2px solid #ffe3e1;
 }
+img {
+  width: 160px !important;
+  height: 160px !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+}
