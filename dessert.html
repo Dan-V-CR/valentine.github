@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/dessert.css" />
   </head>
   <body>
-    <div id="dessertquestion">¿Qué postre comemos?</div>
+    <div id="dessertquestion">
+      <b>¿Qué postre comemos?</b>
+    </div>
 
     <div class="dessert-selection">
 
@@ -61,15 +63,16 @@
 
     </div>
 
+    <!-- Botón para continuar -->
     <button class="button" id="btnContinuar">
-      Continue UWU
+      Continuar UWU
     </button>
 
     <script>
       const checkboxes = document.querySelectorAll("input[name='postre']");
       const btnContinuar = document.getElementById("btnContinuar");
 
-      // Cargar postres guardados (si vuelve atrás)
+      // Cargar selección previa si vuelve atrás
       const postresGuardados = JSON.parse(
         localStorage.getItem("postreValentine") || "[]"
       );
@@ -85,14 +88,14 @@
           .filter((cb) => cb.checked)
           .map((cb) => cb.value);
 
-        // Guardar selección
+        // Guardar postres
         localStorage.setItem(
           "postreValentine",
           JSON.stringify(seleccionados)
         );
 
-        // Avanzar a la página final
-        window.location.href = "thankyou.html";
+        // FLUJO CORRECTO: ir a actividades
+        window.location.href = "activities.html";
       });
     </script>
   </body>
