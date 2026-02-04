@@ -1,47 +1,99 @@
-<div class="dessert-item">
-  <img src="food/tortachocolate.jpg" alt="torta de chocolate" />
-  <label>
-    <input type="checkbox" name="postre" value="Torta de chocolate" />
-    torta de chocolate
-  </label>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postre</title>
+    <link rel="stylesheet" href="css/dessert.css" />
+  </head>
+  <body>
+    <div id="dessertquestion">¿Qué postre comemos?</div>
 
-<div class="dessert-item">
-  <img src="food/tresleches.jpg" alt="tres leches" />
-  <label>
-    <input type="checkbox" name="postre" value="Tres leches" />
-    tres leches
-  </label>
-</div>
+    <div class="dessert-selection">
 
-<div class="dessert-item">
-  <img src="food/tortachilena.jpg" alt="torta chilena" />
-  <label>
-    <input type="checkbox" name="postre" value="Torta chilena" />
-    torta chilena
-  </label>
-</div>
+      <div class="dessert-item">
+        <img src="food/tortachocolate.jpeg" alt="torta de chocolate" />
+        <label>
+          <input type="checkbox" name="postre" value="Torta de chocolate" />
+          torta de chocolate
+        </label>
+      </div>
 
-<div class="dessert-item">
-  <img src="food/arrozconleche.jpg" alt="arroz con leche" />
-  <label>
-    <input type="checkbox" name="postre" value="Arroz con leche" />
-    arroz con leche
-  </label>
-</div>
+      <div class="dessert-item">
+        <img src="food/tresleches.webp" alt="tres leches" />
+        <label>
+          <input type="checkbox" name="postre" value="Tres leches" />
+          tres leches
+        </label>
+      </div>
 
-<div class="dessert-item">
-  <img src="food/cheesecake.jpg" alt="cheesecake" />
-  <label>
-    <input type="checkbox" name="postre" value="Cheesecake" />
-    cheesecake
-  </label>
-</div>
+      <div class="dessert-item">
+        <img src="food/tortachilena.jpg" alt="torta chilena" />
+        <label>
+          <input type="checkbox" name="postre" value="Torta chilena" />
+          torta chilena
+        </label>
+      </div>
 
-<div class="dessert-item">
-  <img src="food/quequezana.jpg" alt="queque de zanahoria" />
-  <label>
-    <input type="checkbox" name="postre" value="Queque de zanahoria" />
-    queque de zanahoria
-  </label>
-</div>
+      <div class="dessert-item">
+        <img src="food/arrozconleche.avif" alt="arroz con leche" />
+        <label>
+          <input type="checkbox" name="postre" value="Arroz con leche" />
+          arroz con leche
+        </label>
+      </div>
+
+      <div class="dessert-item">
+        <img src="food/cheesecake.webp" alt="cheesecake" />
+        <label>
+          <input type="checkbox" name="postre" value="Cheesecake" />
+          cheesecake
+        </label>
+      </div>
+
+      <div class="dessert-item">
+        <img src="food/quequezana.jpeg" alt="queque de zanahoria" />
+        <label>
+          <input type="checkbox" name="postre" value="Queque de zanahoria" />
+          queque de zanahoria
+        </label>
+      </div>
+
+    </div>
+
+    <button class="button" id="btnContinuar">
+      Continue UWU
+    </button>
+
+    <script>
+      const checkboxes = document.querySelectorAll("input[name='postre']");
+      const btnContinuar = document.getElementById("btnContinuar");
+
+      // Cargar postres guardados (si vuelve atrás)
+      const postresGuardados = JSON.parse(
+        localStorage.getItem("postreValentine") || "[]"
+      );
+
+      checkboxes.forEach((cb) => {
+        if (postresGuardados.includes(cb.value)) {
+          cb.checked = true;
+        }
+      });
+
+      btnContinuar.addEventListener("click", () => {
+        const seleccionados = Array.from(checkboxes)
+          .filter((cb) => cb.checked)
+          .map((cb) => cb.value);
+
+        // Guardar selección
+        localStorage.setItem(
+          "postreValentine",
+          JSON.stringify(seleccionados)
+        );
+
+        // Avanzar a la página final
+        window.location.href = "thankyou.html";
+      });
+    </script>
+  </body>
+</html>
