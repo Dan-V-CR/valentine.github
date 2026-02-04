@@ -9,52 +9,49 @@
   <body>
     <h1 title="elige una fecha">¿Estás libre el día...?</h1>
 
-    <form class="form-group" id="formFecha">
+    <div class="form-group" id="formFecha">
       <label>¿Qué día? (elige una fecha)</label>
       <div>
-        <!-- Input de fecha -->
         <input type="date" id="selectorFecha" required />
-
-        <!-- Botón que continúa a la siguiente página -->
-        <button class="button" type="submit" formaction="food.html">
-          Enviar
+        <button class="button" id="btnContinuar">
+          Continuar UWU
         </button>
       </div>
 
-      <!-- Texto de vista previa -->
       <p id="preview" style="margin-top: 12px;"></p>
-    </form>
+    </div>
 
     <script>
-      // Referencias a los elementos HTML
       const selectorFecha = document.getElementById("selectorFecha");
       const preview = document.getElementById("preview");
-      const formFecha = document.getElementById("formFecha");
+      const btnContinuar = document.getElementById("btnContinuar");
 
       // Cargar la fecha guardada (si existe)
       selectorFecha.value = localStorage.getItem("fechaValentine") || "";
 
-      // Función para mostrar la fecha seleccionada
       function actualizarPreview() {
-        if (selectorFecha.value) {
-          preview.innerText = "Fecha seleccionada: " + selectorFecha.value;
-        } else {
-          preview.innerText = "";
-        }
+        preview.innerText = selectorFecha.value
+          ? "Fecha seleccionada: " + selectorFecha.value
+          : "";
       }
 
-      // Mostrar preview inicial
       actualizarPreview();
 
-      // Guardar fecha cuando ella la cambia
+      // Guardar y mostrar cuando cambia
       selectorFecha.addEventListener("change", () => {
         localStorage.setItem("fechaValentine", selectorFecha.value);
         actualizarPreview();
       });
 
-      // Asegurarse de guardar la fecha antes de pasar a la siguiente página
-      formFecha.addEventListener("submit", () => {
+      // Continuar a comida
+      btnContinuar.addEventListener("click", () => {
+        if (!selectorFecha.value) {
+          alert("Por favor elige una fecha 💕");
+          return;
+        }
+
         localStorage.setItem("fechaValentine", selectorFecha.value);
+        window.location.href = "food.html";
       });
     </script>
   </body>
