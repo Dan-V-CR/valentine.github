@@ -1,23 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thank you</title>
+    <title>Gracias</title>
     <link rel="stylesheet" href="css/lastpage.css" />
   </head>
   <body>
-    <div id="thankyou"><b>Thank you</b></div>
+    <div id="thankyou"><b>Gracias</b></div>
 
-    <img id="rizz" src="rizz.gif" alt="rizzler god" class="responsive" />
+    <img id="rizz" src="rizz.gif" alt="rizz" class="responsive" />
     <br />
+
     <audio controls autoplay loop>
       <source src="congratulations.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
+      Tu navegador no soporta el audio.
     </audio>
-    <h1>Don't go yet!</h1>
-    <button class="button" onclick="location.href='date.html'">
-      Click me UWU
+
+    <h1>¡No te vayas todavía!</h1>
+
+    <!-- Resumen -->
+    <div id="resumen" style="margin-top: 18px;"></div>
+
+    <!-- Botón para enviarte el resultado -->
+    <button class="button" id="btnEnviar" style="margin-top: 12px;">
+      Enviar el resumen 💌
     </button>
+
+    <!-- Botón para volver a elegir -->
+    <button class="button" onclick="location.href='date.html'" style="margin-top: 12px;">
+      Cambiar opciones UWU
+    </button>
+
+    <script>
+      // Leer datos guardados
+      const fecha = localStorage.getItem("fechaValentine") || "";
+      const comida = JSON.parse(localStorage.getItem("comidaValentine") || "[]");
+      const postre = JSON.parse(localStorage.getItem("postreValentine") || "[]");
+
+      // Validaciones básicas
+      if (!fecha) {
+        alert("Falta seleccionar la fecha 😅");
+        window.location.href = "date.html";
+      }
+
+      // Formatear texto
+      const fechaTexto = fecha || "No seleccionada";
+      const comidaTexto = comida.length > 0 ? comida.join(", ") : "No seleccionada";
+      const postreTexto = postre.length > 0 ? postre.join(", ") : "No seleccionado";
+
+      // Mostrar resumen
+      document.getElementById("resumen").innerHTML = `
+        <p><b>Fecha:</b> ${fechaTexto}</p>
+        <p><b>Comida:</b> ${comidaTexto}</p>
+        <p><b>Postre:</b> ${postreTexto}</p>
+      `;
+
+      // Enviar correo
+      document.getElementById("btnEnviar").addEventListener("click", () => {
+        const subject = "Elección Valentine 💘";
+        const body =
+          "Resumen de lo que elegí:\n\n" +
+          "Fecha: " + fechaTexto + "\n" +
+          "Comida: " + comidaTexto + "\n" +
+          "Postre: " + postreTexto + "\n\n" +
+          "Te amo 💖";
+
+        // Tu correo (ya configurado)
+        const to = "advalverde01@gmail.com";
+
+        window.location.href =
+          `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
   </body>
 </html>
